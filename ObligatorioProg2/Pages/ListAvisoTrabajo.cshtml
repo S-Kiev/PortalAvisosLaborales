@@ -1,0 +1,18 @@
+﻿@page
+@using ObligatorioProg2.Dominio;
+@model ObligatorioProg2.Pages.ListAvisoTrabajoModel
+@{
+} 
+<h1>Listado de Aviso de trabajos</h1>
+<table id="tablaCliente" class="table table-striped table-bordered">
+    <tr><th>Número de la Publicidad</th><th>Fecha de Alta</th><th>Fecha de Inicio</th><th>Fecha de Fin</th><th>Titulo</th><th>Cliente</th><th>Precio</th></tr>
+    @foreach (AvisosTrabajo p in Model.PublicidadAListar)
+    {
+        @if (p.FechaFin > DateTime.Today)
+        {
+            <tr><td>@p.Numero </td><td>@p.FechaAlta</td><td>@p.FechaInicio</td><td>@p.FechaFin</td><td>@p.Titulo</td><td>@p.Cliente.Nombre</td><td>@p.CalcularPrecio()</td><td><a class="btn btn-success btn-primary" href="/EditarAvisoTrabajo?numero=@p.Numero">Modificar</a></td><td><a class="btn btn-success btn-primary" href="/Detalle?numero=@p.Numero"> Ver Más</a></td></tr>
+        }
+    }
+</table>
+
+<a class="btn btn-success btn-primary" asp-page="altaAvisoTrabajo">Volver al Alta</a>

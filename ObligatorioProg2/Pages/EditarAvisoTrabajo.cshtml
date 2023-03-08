@@ -1,0 +1,38 @@
+﻿@page
+@using ObligatorioProg2.Dominio;
+@model ObligatorioProg2.Pages.EditarAvisoTrabajoModel
+@{
+}
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <form method="post">
+            <div class="mb-3">
+                <label for="numPub">Número</label><input type="number" name="numPub" value="@Model.PublicidadEditada.Numero" />
+                <label for="fechaInicio">Fecha Inicio</label><input type="datetime" name="fInicio" value="@Model.PublicidadEditada.FechaInicio" />
+                <label for="fechaFin">Fecha Fin</label><input type="datetime" name="fFin" value="@Model.PublicidadEditada.FechaFin" />
+                <label for="titulo">Titulo</label><input type="text" name="titulo" value="@Model.PublicidadEditada.Titulo" />
+                <fieldset>
+                    <legend>Detalle de la Publicidad</legend>
+                    <textarea name="detalle" cols="60" rows="10" value="@Model.PublicidadEditada.Detalle">@Model.PublicidadEditada.Detalle</textarea><br>
+                </fieldset>
+                <label for="selCliente">Seleccione Cliente</label>
+                <select name="selCliente">
+                    <option value="@Model.PublicidadEditada.Cliente.Codigo"> @Model.PublicidadEditada.Cliente.Nombre ,  @Model.PublicidadEditada.Cliente.Documento </option>
+                    @foreach (Cliente c in Model.ClienteAListar)
+                    {
+                        @if (c.Codigo == Model.PublicidadEditada.Cliente.Codigo)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            <option value="@c.Codigo"> @c.Nombre ,  @c.Documento </option>
+                        }
+                    }
+                </select>
+                <button type="submit">Modificar Aviso</button>
+            </div>
+        </form>
+    </div>
+</div>

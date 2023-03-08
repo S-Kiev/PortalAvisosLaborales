@@ -1,0 +1,36 @@
+﻿@page
+@model ObligatorioProg2.Pages.altaPublicidadComercialModel
+@using ObligatorioProg2.Dominio;
+@{}
+    <h1>Alta Publicidad Comercial</h1>
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="fechaInicio">Fecha Inicio</label><input type="date" name="fInicio" value="" />
+                    <label for="fechaFin">Fecha Fin</label><input type="date" name="fFin" value="" />
+                    <label for="titulo">Titulo</label><input type="text" name="titulo" value="" />
+                    <label for="imagen">Copie la ruta de la Imagen</label><input type="text" name="imagen" value="" placeholder="ingrese la ruta de la imagen"/>
+                    <fieldset>
+                        <legend>Detalle de la Publicidad</legend>
+                        <textarea name="detalle" cols="60" rows="10" placeholder="Hata 1000 caracteres"></textarea><br>
+                    </fieldset>
+                    <label for="selCliente">Seleccione Cliente</label>
+                    <select name="selCliente">
+                        @foreach (Cliente c in Model.ClienteAListar)
+                        {
+                          
+                            
+                                <option value="@c.Codigo"> @c.Nombre ,  @c.Documento </option>
+                            
+                        }
+                    </select>
+                    <button type="submit">Agregar Publicidad</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+

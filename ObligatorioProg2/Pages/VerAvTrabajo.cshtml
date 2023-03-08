@@ -1,0 +1,22 @@
+﻿@page
+@using ObligatorioProg2.Dominio;
+@model ObligatorioProg2.Pages.VerAvTrabajoModel
+@{
+}
+
+<h1>Ver Aviosos Laborales</h1>
+
+@foreach (AvisosTrabajo p in Model.PublicidadAListar)
+{
+<div class="row">
+    <div class="col-12 m-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@p.Titulo</h5>
+                <p class="card-text">@p.Detalle</p>
+                <a href="/EditarPublicidadComercial?numero=@p.Numero" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+}

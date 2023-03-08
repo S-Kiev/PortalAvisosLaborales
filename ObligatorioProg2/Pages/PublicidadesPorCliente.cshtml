@@ -1,0 +1,26 @@
+﻿@page
+@using ObligatorioProg2.Dominio;
+@model ObligatorioProg2.Pages.PublicidadesPorClienteModel
+@{
+}
+
+<h2>Listar Publicidades de @Model.ClienteSeleccionado.Nombre, Total de Publicidades: @Model.PublicidadesDeCliente.Count</h2>
+
+<table class="table table-striped table-bordered">
+    <tr><th>Número</th><th>Tipo</th><th>Fecha de Alta</th><th>Fecha de Inicio</th><th>Fecha de Fin</th><th>Titulo</th><th>Cliente</th><th>Precio</th></tr>
+
+    @foreach (Publicidad pub in Model.PublicidadesDeCliente)
+    {
+        string tipo;
+        if(pub is PublicidadComercial)
+        {
+            tipo = "Publicidad Comercial";
+        }
+        else
+        {
+            tipo = " Aviso de Trabajo";
+        }
+
+            <tr><td>@pub.Numero </td><td>@tipo</td><td>@pub.FechaAlta</td><td>@pub.FechaInicio</td><td>@pub.FechaFin</td><td>@pub.Titulo</td><td>@pub.Cliente.Nombre</td><td>@pub.CalcularPrecio();</td><td><a class="btn btn-success btn-primary" href="/EditarPublicidad?codigo=@pub.Cliente.Codigo">Ver Más</a></td></tr>
+    }
+</table>

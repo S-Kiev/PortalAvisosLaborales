@@ -1,0 +1,20 @@
+﻿@page
+@using ObligatorioProg2.Dominio
+@model ObligatorioProg2.Pages.listadoClienteModel
+@{}
+    <h1>Listado Clientes</h1>
+    <table id="tablaCliente" class="table table-striped table-bordered">
+        
+        <tr><th>Nombre</th><th>Dirección</th><th>Teléfono</th><th>Fecha de Alta</th><th>Cantidad de Publicidades</th></tr>
+        @foreach (Cliente c in Model.ClienteAListar)
+        {
+      
+            
+    <tr><td>@c.Nombre </td><td>@c.Direccion</td><td>@c.Telefono</td><td>@c.FechaAlta</td><td>@Empresa.Instancia.CalcularPubXCliente(c.Codigo)</td><td><a class="btn btn-success btn-primary" href="/EditarClinete?codigo=@c.Codigo">Editar</a><td><a class="btn btn-success btn-danger" href="/PublicidadesPorCliente?codigo=@c.Codigo">Ver Publicidades</a></td></tr>
+            
+        }
+    </table>
+
+    <a class="btn btn-success btn-primary" asp-page="altaCliente">Volver al Alta</a>
+
+

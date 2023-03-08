@@ -1,0 +1,41 @@
+﻿@page
+@using ObligatorioProg2.Dominio;
+@model ObligatorioProg2.Pages.verPubConImagenModel
+@{
+}
+
+<h1>Ver Publicidades Comerciales</h1>
+@foreach (PublicidadComercial p in Model.PublicidadAListar)
+{
+
+    <div class="card-columns">
+        @if (!String.IsNullOrWhiteSpace(p.Imagen))
+        {
+
+            <div class="card" style="width: 48rem;">
+                <img src="@p.Imagen" class="card-img-top img-fluid" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Titulo</h5>
+                    <p class="card-text">@p.Detalle</p>
+                    <a href="/EditarPublicidadComercial?numero=@p.Numero" class="btn btn-primary">Editar</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            
+            <div class="card" style="width: 48rem;">
+                <div class="card-body" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@p.Titulo</h5>
+                        <p class="card-text">@p.Detalle</p>
+                        <a href="/EditarPublicidadComercial?numero=@p.Numero" class="btn btn-primary">Editar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    }
+
+
